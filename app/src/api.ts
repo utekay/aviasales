@@ -1,7 +1,7 @@
 import { IVisitor } from './types'
 
 const TOKEN_KEY = 'token'
-const API_ADDRESS = 'http://localhost:8000'
+const API_ADDRESS = process.env.REACT_APP_API_ADDRESS
 
 const createAPIProvider = () => {
   const getToken = () => window.localStorage.getItem(TOKEN_KEY) || ''

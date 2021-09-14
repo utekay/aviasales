@@ -5,13 +5,18 @@ import cors from 'cors'
 import { db } from './db'
 import { createController } from './visitors/controller'
 
+const PORT = 8000
+
 const app = express()
+const apiRouter = express.Router()
 
 const visitorController = createController({
   db,
 })
 
-app.use(cors({
+app.use('/api', apiRouter)
+
+apiRouter.use(cors({
   allowedHeaders: [
     'Authorization',
     'Content-Type',
@@ -24,12 +29,12 @@ app.use(cors({
   origin: '*',
 }))
 // app.use(cookieParser())
-app.use(express.json())
+apiRouter.use(express.json())
 
-app.get('/get-visitor', visitorController.getVisitor)
-app.post('/set-visitor-did-share', visitorController.setVisitorDidShare)
-app.post('/set-visitor-did-subscribe', visitorController.setVisitorDidSubscribe)
+apiRouter.get('/get-visitor', visitorController.getVisitor)
+apiRouter.post('/set-visitor-did-share', visitorController.setVisitorDidShare)
+apiRouter.post('/set-visitor-did-subscribe', visitorController.setVisitorDidSubscribe)
 
-app.listen(8000, () => {
-  console.log("Server is at :8000")
+app.listen(PORT, () => {
+  console.log(`Server is running at :${PORT}`)
 })

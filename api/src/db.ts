@@ -1,7 +1,7 @@
 import { Pool } from 'pg'
 
 export const db = new Pool({
-  host: 'localhost',
+  host: 'db',
   port: 5432,
   ssl: false,
   database: 'aviasales',

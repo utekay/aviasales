@@ -6,32 +6,32 @@ services:
     image: postgres:13-alpine
     restart: always
     environment: 
+      POSTGRES_USER: aviasales
       POSTGRES_PASSWORD: aviasales
     volumes: 
-      - ../db/data:/var/lib/postgresql/data
-      - ../db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     
-  # api:
-  #   build: 
-  #     ../api
-  #   restart: always
-  #   depends_on:
-  #     - db
+  api:
+    build: 
+      ./api
+    restart: always
+    depends_on:
+      - db
 
-  # app:
-  #   build: 
-  #     context: ../app
-  #   restart: always
+  app:
+    build: 
+      ./app
+    restart: always
+    depends_on:
+      - api
 
-  # proxy:
-  #   build: 
-  #     ../proxy
-  #   restart: always
-  #   volumes: 
-  #     - ../certs:/etc/nginx/certs
-  #   ports: 
-  #     - "80:80"
-  #     - "443:443"
-  #   depends_on:
-  #     - app
-  #     - api
+  proxy:
+    build: 
+      ./proxy
+    restart: always
+    ports: 
+      - "8081:80"
+    depends_on:
+      - app
+      - api
