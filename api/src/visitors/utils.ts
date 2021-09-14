@@ -3,6 +3,9 @@ export const isEmailValid = (value: string): boolean => {
 }
 
 export const getMaskedEmail = (email: string): string => {
+  if (isEmailValid(email) === false) {
+    return email
+  }
   const [
     username,
     rest,

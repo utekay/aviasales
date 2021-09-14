@@ -1,4 +1,4 @@
-import { Client, Pool } from 'pg'
+import { Client, Pool, QueryResult } from 'pg'
 
 import { IVisitor } from './types'
 
@@ -10,8 +10,8 @@ export const createModel = ({
   db,
 }: IProps) => {
 
-  const getVisitor = async (id: IVisitor['id']): Promise<IVisitor | undefined> => {
-    const results = await db.query(`
+  const getVisitor = async (id: IVisitor['id']): Promise<QueryResult<IVisitor>> => {
+    return db.query(`
       SELECT 
         * 
       FROM 
@@ -20,18 +20,6 @@ export const createModel = ({
         id = $1
       ;
     `, [id])
-
-    switch (results.rowCount) {
-      case 0: {
-        return undefined
-      }
-      case 1: {
-        return results.rows[0]
-      }
-      default: {
-        throw new Error('getVisitor() returned more than one visitor')
-      }
-    }
   }
 
   const createVisitor = async (visitor: IVisitor): Promise<void> => {
@@ -54,8 +42,8 @@ export const createModel = ({
     ])
   }
 
-  const updateVisitor = async (visitor: IVisitor): Promise<void> => {
-    await db.query(`
+  const updateVisitor = async (visitor: IVisitor): Promise<QueryResult> => {
+    return await db.query(`
       UPDATE 
         public.visitors
       SET 

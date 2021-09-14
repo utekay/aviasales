@@ -17,13 +17,17 @@ export const createService = ({
   })
 
   const getVisitor = async (id: IVisitor['id']): Promise<IVisitor> => {
-    const visitor = await __model.getVisitor(id)
-    if (visitor === undefined) {
-      throw new VisitorDoesNotExistError()
-    }
-    return {
-      ...visitor,
-      email: utils.getMaskedEmail(visitor.email), // secure
+    const results = await __model.getVisitor(id)
+    switch (results.rowCount) {
+      case 0: {
+        throw new VisitorDoesNotExistError()
+      }
+      case 1: {
+        return results.rows[0]
+      }
+      default: {
+        throw new Error('getVisitor() returned more than one visitor')
+      }
     }
   }
 
@@ -38,11 +42,7 @@ export const createService = ({
   }
 
   const setVisitorDidShare = async (id: IVisitor['id']) => {
-    const visitor = await __model.getVisitor(id)
-    if (visitor === undefined) {
-      throw new VisitorDoesNotExistError()
-    }
-
+    const visitor = await getVisitor(id)
     await __model.updateVisitor({
       ...visitor,
       shared: true,
@@ -50,11 +50,7 @@ export const createService = ({
   }
 
   const setVisitorDidSubscribe = async (id: IVisitor['id'], email: IVisitor['email']) => {
-    const visitor = await __model.getVisitor(id)
-    if (visitor === undefined) {
-      throw new VisitorDoesNotExistError()
-    }
-
+    const visitor = await getVisitor(id)
     await __model.updateVisitor({
       ...visitor,
       email,
@@ -75,3 +71,4 @@ export class VisitorDoesNotExistError extends Error {
     this.name = 'VisitorDoesNotExistError'
   }
 }
+

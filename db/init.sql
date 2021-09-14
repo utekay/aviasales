@@ -6,4 +6,4 @@ CREATE TABLE public.visitors (
     email varchar(64) NOT NULL
 );
 
--- TODO: index
+CREATE UNIQUE INDEX email ON public.visitors (email); 

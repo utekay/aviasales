@@ -37,7 +37,10 @@ export const createController = ({
       res.status(500).end()
       return
     }
-    res.status(200).json(visitor)
+    res.status(200).json({
+      ...visitor,
+      email: utils.getMaskedEmail(visitor.email),
+    } as IVisitor)
   }
 
   const setVisitorDidShare: RequestHandler = async (req, res) => {
