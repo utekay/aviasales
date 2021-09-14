@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment: 
+      POSTGRES_PASSWORD: aviasales
+    volumes: 
+      - ../db/data:/var/lib/postgresql/data
+      - ../db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    
+  # api:
+  #   build: 
+  #     ../api
+  #   restart: always
+  #   depends_on:
+  #     - db
+
+  # app:
+  #   build: 
+  #     context: ../app
+  #   restart: always
+
+  # proxy:
+  #   build: 
+  #     ../proxy
+  #   restart: always
+  #   volumes: 
+  #     - ../certs:/etc/nginx/certs
+  #   ports: 
+  #     - "80:80"
+  #     - "443:443"
+  #   depends_on:
+  #     - app
+  #     - api

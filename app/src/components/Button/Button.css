@@ -1,0 +1,23 @@
+.button {
+  font-size: 2em;
+  font-family: "Shnobel";
+  line-height: 1;
+  padding: 0.4em 1em 0.3em 1em;
+  background: white;
+  color: #7f4156;
+  border: 0.08em solid white;
+  border-radius: 1.5em;
+  transition: all 0.15s;
+}
+.button:enabled {
+  cursor: pointer;
+}
+.button:enabled:hover {
+  background: #7f4156;
+  color: white;
+  border-color: #7f4156;
+}
+.button:disabled {
+  background: transparent;
+  color: white;
+}

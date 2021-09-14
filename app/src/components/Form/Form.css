@@ -1,0 +1,40 @@
+.form {}
+
+.form__block {
+  margin-top: 2em;
+  padding-left: 3em;
+  padding-right: 3em;
+  position: relative;
+}
+.form__block:first-of-type {
+  margin-top: 0;
+}
+.form__block_for_submit {
+  text-align: center;
+}
+
+.form__block-number {
+  position: absolute;
+  top: 10;
+  left: 0;
+  font-family: "Shnobel";
+  font-size: 2em;
+}
+
+.form__field-block {
+  margin-top: 1em;
+}
+
+.form__input {
+  width: 100%;
+  padding: 0.6em 1em;
+  font-size: 1.2em;
+  color: black;
+  border: none;
+  border-radius: 1.5em;
+  /* resets */
+  box-shadow: none;
+  background-image:none;
+  background-clip: padding-box;
+  background-color: white;
+}

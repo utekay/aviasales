@@ -1,0 +1,83 @@
+.social-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: -1em;
+}
+
+.social-block__button {
+  font-size: 1em;
+  width: 3.2em;
+  height: 3.2em;
+  border: none;
+  border-radius: 50%;
+  transition: transform 0.15s;
+  position: relative;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+.social-block__button:first-of-type {
+  margin-left: 0;
+}
+.social-block__button:hover {
+  transform: scale(1.1);
+}
+.social-block__button:enabled {
+  cursor: pointer;
+}
+
+.social-block__button::before,
+.social-block__button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: opacity 0.15s;
+}
+.social-block__button::after {
+  opacity: 0;
+  background-image: url(./images/like.svg);
+  background-size: auto 1.3em;
+}
+.social-block__button:hover.social-block__button::after {
+  opacity: 1;
+}
+.social-block__button:hover.social-block__button::before {
+  opacity: 0;
+}
+
+.social-block__button_social_vk {
+  background-color: #45668e;
+}
+.social-block__button_social_vk::before {
+  background-image: url(./images/vk.svg);
+  background-size: 1.3em auto;
+}
+
+.social-block__button_social_fb {
+  background-color: #3b5998;
+}
+.social-block__button_social_fb::before {
+  background-image: url(./images/fb.svg);
+  background-size: auto 1.3em;
+}
+
+.social-block__button_social_twitter {
+  background-color: #45abe7;
+}
+.social-block__button_social_twitter::before {
+  background-image: url(./images/twitter.svg);
+  background-size: 1.3em auto;
+}
+
+.social-block__button_social_odnoklassniki {
+  background-color: #de7840;
+}
+.social-block__button_social_odnoklassniki::before {
+  background-image: url(./images/odnoklassniki.svg);
+  background-size: auto 1.3em;
+}

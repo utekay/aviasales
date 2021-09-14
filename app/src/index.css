@@ -1,0 +1,33 @@
+html {
+  box-sizing: border-box;
+  outline: none;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  outline: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #cd718e;
+  color: white;
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (min-width: 767px) {
+  body {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 361px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+
+
