@@ -61,7 +61,9 @@ export const createController = ({
   }
 
   const setVisitorDidSubscribe: RequestHandler = async (req, res) => {
-    if (req.body.email === undefined || utils.validateEmail(req.body.email) === false) {
+    if (typeof req.body.email !== 'string' 
+      || utils.isEmailValid(req.body.email) === false
+    ) {
       res.status(400).end()
       return
     }

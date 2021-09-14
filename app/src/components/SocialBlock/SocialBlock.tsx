@@ -36,8 +36,7 @@ export const SocialBlock = ({
         return
       }
       timerId && clearInterval(timerId)
-      console.log('closed')
-      // onDidShare()
+      onDidShare()
     }, 250)
     popup.focus()
   }

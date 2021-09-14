@@ -103,7 +103,7 @@ const App = () => {
             путешествие
           </h1>
         )}
-        {formIsSent === false ? (
+        {formIsSent === false && (
           <Form 
             isLoading={state.isLoading}
             shared={state.visitor.shared}
@@ -112,10 +112,6 @@ const App = () => {
             onDidSubscribe={handleVisitorDidSubscribe}
             className="app__form"
           />
-        ) : (
-          <div className="">
-            Thanks!
-          </div>
         )}
       </div>
     </div>

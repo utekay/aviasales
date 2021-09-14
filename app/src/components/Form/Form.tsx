@@ -42,7 +42,7 @@ export const Form = ({
     onDidSubscribe(emailDraft)
   }
 
-  const formIsValid = isEmailValid(email)
+  const formIsValid = isEmailValid(emailDraft)
   const canSubmit = formIsValid && isLoading === false && emailIsSaved === false
 
   return (
@@ -100,6 +100,6 @@ export const Form = ({
   )
 }
 
-const isEmailValid = (value: string) => {
-  return true
+const isEmailValid = (value: string): boolean => {
+  return /[a-z0-9.+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(value)
 }
