@@ -12,13 +12,30 @@
 .form__block_for_submit {
   text-align: center;
 }
+.form__block_is-disabled_yes {
+  filter: opacity(0.5);
+}
+
+.form__block-number,
+.form__block-checkbox {
+  position: absolute;
+  left: 0;
+}
 
 .form__block-number {
-  position: absolute;
-  top: 10;
-  left: 0;
+  top: 0;
   font-family: "Shnobel";
   font-size: 2em;
+}
+.form__block_is-disabled_yes .form__block-number {
+  display: none;
+}
+
+.form__block-checkbox {
+  top: 0.2em;
+}
+.form__block_is-disabled_no .form__block-checkbox {
+  display: none;
 }
 
 .form__field-block {

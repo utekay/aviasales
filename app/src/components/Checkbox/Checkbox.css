@@ -1,0 +1,15 @@
+.checkbox {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  position: relative;
+  background-color: #7f4156;
+  border-radius: 25%;
+}
+
+.checkbox__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

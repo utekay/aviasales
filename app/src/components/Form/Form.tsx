@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SocialBlock } from '../SocialBlock'
+import { Checkbox } from '../Checkbox'
 
 import '../Button/Button.css'
 import './Form.css'
@@ -49,10 +50,11 @@ export const Form = ({
       onSubmit={handleSubmit}
       className={`form ${className}`}
     >
-      <div className="form__block">
-        <div className="form__block-number">
+      <div className={`form__block form__block_is-disabled_${shared ? 'yes' : 'no'}`}>
+        <span className="form__block-number">
           1.
-        </div>
+        </span>
+        <Checkbox className="form__block-checkbox" />
         <label className="form__label">
           Поделись с друзьями:
         </label>
@@ -63,10 +65,11 @@ export const Form = ({
           />
         </div>
       </div>
-      <div className="form__block">
-        <div className="form__block-number">
+      <div className={`form__block form__block_is-disabled_${emailIsSaved ? 'yes' : 'no'}`}>
+        <span className="form__block-number">
           2.
-        </div>
+        </span>
+        <Checkbox className="form__block-checkbox" />
         <label 
           htmlFor="id_email"
           className="form__label"
